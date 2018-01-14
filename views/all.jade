@@ -1,0 +1,10 @@
+extends layout
+block content
+  h1 All Content
+  div(class="content")
+    div(class="list")
+      for post in data
+        - function formatDate(str) { var date = new Date(str); var d = date.getDate(dateString); var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]; var m = monthNames[date.getMonth()]; var y = date.getFullYear(); return d+' '+m+' '+y; }
+        p Date: #{formatDate(post.date)}
+        a(href= '/' + post.slug) <h3>#{post.title.rendered}</h3>
+        p!= post.excerpt.rendered
